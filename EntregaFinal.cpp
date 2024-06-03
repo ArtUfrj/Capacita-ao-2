@@ -3,8 +3,7 @@
 
 float externotemp;
 float tempIn;
-float checartemperatura;
-int checartemperatura = 5000;
+unsigned long checartemperatura = 5000;
 int externotempPin = A1;
 int tempPinIn = 0;
 int led = 13;
@@ -24,7 +23,8 @@ void loop()
 {
 digitalWrite(led, HIGH);
 unsigned long atualMillis = millis();
-if (atualMillis - ultchecartemperaturaMillis >= checartemperatura)
+
+if (atualMillis - ultchecartemperaturaMillis >= checartemperatura){
 
   externotempPin = analogRead (externotempPin);
   externotempPin = externotempPin * 0.48828125;
@@ -43,11 +43,12 @@ if (atualMillis - ultchecartemperaturaMillis >= checartemperatura)
     lcd.print(tempIn);
     lcd.print("*C");
 
-
+}
   if(externotemp > 25) {
   } else if (externotemp < 20) {
   }
-}
+
 
     delay(50);
-    digitalWrite(ledPin, Low)
+    digitalWrite(led, LOW);
+}
